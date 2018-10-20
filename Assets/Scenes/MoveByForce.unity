@@ -229,6 +229,16 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114321762999922444, guid: 20fc757833acdbf4f9a96a52de551738,
+        type: 2}
+      propertyPath: horizontalAxis
+      value: Horizontal
+      objectReference: {fileID: 0}
+    - target: {fileID: 114321762999922444, guid: 20fc757833acdbf4f9a96a52de551738,
+        type: 2}
+      propertyPath: verticalAxis
+      value: Vertical
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20fc757833acdbf4f9a96a52de551738, type: 2}
   m_IsPrefabAsset: 0

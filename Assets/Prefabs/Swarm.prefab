@@ -74,7 +74,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
+  horizontalAxis: Horizontal1
+  verticalAxis: Vertical1
   thrust: 0.5
+  forceMode: 1
 --- !u!212 &212140845313767972
 SpriteRenderer:
   m_ObjectHideFlags: 1
