@@ -59,7 +59,6 @@ public class AnimationScript : MonoBehaviour {
                 {
                     goingUp = true;
                     floatTimer = 0;
-                    floatSpeed = +floatSpeed;
                 }
             }
 

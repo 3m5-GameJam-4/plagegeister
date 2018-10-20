@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -26,11 +27,12 @@ public class Player : MonoBehaviour
 
     public void nextSwarm()
     {
-        _swarmIndex = Math.Abs((_swarmIndex + 1) % _swarms.Count);
+        if (_swarms.Any()) _swarmIndex = Math.Abs((_swarmIndex + 1) % _swarms.Count);
     }
 
     public void prevSwarm()
     {
+        if (!_swarms.Any()) return; 
         _swarmIndex = (_swarmIndex - 1) % _swarms.Count;
         if (_swarmIndex < 0) _swarmIndex += _swarms.Count;
     }
@@ -46,7 +48,7 @@ public class Player : MonoBehaviour
     private void Update()
     {
         if (currentSwarm())
-        {            
+        {
             var hori = Input.GetAxis(InputHorizontalAxis);
             var vert = Input.GetAxis(InputVerticalAxis);
             var direction = new Vector2(hori, vert);

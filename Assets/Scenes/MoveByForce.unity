@@ -454,6 +454,16 @@ Prefab:
       propertyPath: InputSpawnSwarm
       value: SpawnSwarm1
       objectReference: {fileID: 0}
+    - target: {fileID: 114926580814193242, guid: 4538869f7bd0cec45a6752c43ff68d03,
+        type: 2}
+      propertyPath: InputHorizontalAxis
+      value: Horizontal1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114926580814193242, guid: 4538869f7bd0cec45a6752c43ff68d03,
+        type: 2}
+      propertyPath: InputVerticalAxis
+      value: Vertical1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4538869f7bd0cec45a6752c43ff68d03, type: 2}
   m_IsPrefabAsset: 0
