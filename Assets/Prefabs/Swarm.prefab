@@ -72,10 +72,11 @@ MonoBehaviour:
   Rb: {fileID: 54886739798748592}
   BoidPrefab: {fileID: 1653325384812590, guid: 311e444aa93a68d4ea7da1436ff0d1e8, type: 2}
   Dynamic: {fileID: 0}
+  Player: {fileID: 0}
   Direction: {x: 0, y: 0, z: 0}
   Force: 0.5
   ForceMode: 1
-  InitialBoids: 10
+  InitialBoids: 30
   Boids: []
 --- !u!212 &212140845313767972
 SpriteRenderer:
