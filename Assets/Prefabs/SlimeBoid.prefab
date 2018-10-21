@@ -597,7 +597,7 @@ MonoBehaviour:
   SeparationFactor: 3
   SeparationRadius: 2
   DestinationFactor: 1.5
-  DestinationRadius: 3
+  DestinationRadius: 6
   RandomRange: 0.1
 --- !u!136 &136604725596052066
 CapsuleCollider:
