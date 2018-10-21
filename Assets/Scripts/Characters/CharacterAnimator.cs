@@ -11,16 +11,16 @@ public class CharacterAnimator : MonoBehaviour, ICharacterAnimation
 
 	public void Attack()
 	{
-		_animator?.Play("Attack");
+		_animator?.Play("Attack01");
 	}
 
 	public void Die()
 	{
-		_animator?.Play("Die");
+		_animator?.Play("Death");
 	}
 
 	public void Move()
 	{
-		_animator?.Play("Move");
+		_animator?.Play("Walk");
 	}
 }

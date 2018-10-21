@@ -7,7 +7,6 @@ public class Enemy : MonoBehaviour
 	[SerializeField] private Transform _target;
 	[SerializeField] private float _speed = 5;
 	[SerializeField] private float _attackRange;
-	[SerializeField] private ICharacterAnimation _characterAnimation;
 
 	public Transform Target
 	{
@@ -16,9 +15,14 @@ public class Enemy : MonoBehaviour
 	}
 
 	public float Speed => _speed;
-	
-	private ICharacterAnimation CharacterAnimation => _characterAnimation;
+
+	private ICharacterAnimation CharacterAnimation { get; set; }
 	private float AttackRange => _attackRange;
+
+	private void Start()
+	{
+		CharacterAnimation = GetComponent<ICharacterAnimation>();
+	}
 	
 	// Update is called once per frame
 	private void Update ()
@@ -26,33 +30,34 @@ public class Enemy : MonoBehaviour
 		var target = Target;
 		if (target == null)
 		{
-			CharacterAnimation.Idle();
+			CharacterAnimation?.Idle();
 			return;
 		}
 
-		MoveTowardsTarget(transform.position, target.position, Speed * Time.deltaTime);
 		var distance = Vector3.Distance(transform.position, target.position);
-		TargetInRange(distance);
+		if (TargetInRange(distance))
+		{
+			CharacterAnimation?.Attack();
+		}
+		else
+		{
+			MoveTowardsTarget(transform.position, target.position, Speed * Time.deltaTime);
+		}
 	}
 
 	private void MoveTowardsTarget(Vector3 current, Vector3 target, float maxDistanceDelta)
 	{
 		transform.position = Vector3.MoveTowards(current, target, maxDistanceDelta);
-		CharacterAnimation.Move();
+		CharacterAnimation?.Move();
 	}
 
-	private void TargetInRange(float distance)
+	private bool TargetInRange(float distance)
 	{
-		if (distance > AttackRange)
-		{
-			return;
-		}
-		
-		CharacterAnimation.Attack();
+		return distance <= AttackRange;
 	}
 
 	private void OnDestroy()
 	{
-		CharacterAnimation.Die();
+		CharacterAnimation?.Die();
 	}
 }
