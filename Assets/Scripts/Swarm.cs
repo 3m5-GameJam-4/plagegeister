@@ -43,7 +43,7 @@ public class Swarm : MonoBehaviour, ISwarmControl
         
         _gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
 
-        IncreaseSwarmHealth(10);
+        IncreaseSwarmHealth(InitialBoids);
     }
 
     private void FixedUpdate()
