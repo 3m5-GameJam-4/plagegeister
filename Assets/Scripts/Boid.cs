@@ -27,6 +27,7 @@ public class Boid : MonoBehaviour
     public float SeparationRadius = 1f;
 
     public float DestinationFactor = 1f;
+    public float DestinationRadius = 1f;
 
     public float RandomRange = 1f;
 
@@ -70,7 +71,7 @@ public class Boid : MonoBehaviour
 
     private Vector3 ToDestination(Transform dest)
     {
-        return dest ? SteerTo(dest.position) : Vector3.zero;
+        return dest && (dest.position - Rb.position).magnitude > DestinationRadius ? SteerTo(dest.position) : Vector3.zero;
     }
 
     private Vector3 Separate(ICollection<Rigidbody> neighbors)
@@ -84,7 +85,7 @@ public class Boid : MonoBehaviour
         if (!near.Any()) return Vector3.zero;
         var mean = near
             .Select((boid) => boid.position - Rb.position)                
-            .Aggregate((current, diff) => current - diff.normalized / diff.magnitude);
+            .Aggregate((current, diff) => current - MaxForce * diff.normalized / diff.magnitude);
         return mean / neighbors.Count;
     }
 
@@ -140,7 +141,7 @@ public class Boid : MonoBehaviour
     private Vector3 SteerTo(Vector3 to)
     {
         var desired = to - Rb.position;
-        return desired.normalized * MaxForce;
+        return desired.normalized * MaxForce * (Rb.velocity.magnitude > MaxSpeed ? 0 : 1);
     }
 
     private Rigidbody[] ToRigidbodies(IEnumerable<GameObject> objs)
