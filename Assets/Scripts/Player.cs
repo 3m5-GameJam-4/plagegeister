@@ -40,6 +40,7 @@ public class Player : MonoBehaviour
     {
         var obj = Instantiate(SwarmPrefab, transform.position, transform.rotation, Dynamic.transform);
         var swarm = obj.GetComponent<Swarm>();
+        swarm.Player = this;
         swarm.Color = Color;
         _swarms.Add(swarm);
     }

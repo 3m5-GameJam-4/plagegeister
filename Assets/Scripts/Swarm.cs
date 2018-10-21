@@ -9,6 +9,7 @@ public class Swarm : MonoBehaviour, ISwarmControl
     public Rigidbody Rb;
     public GameObject BoidPrefab;
     public GameObject Dynamic;
+    public Player Player;
 
     public Vector3 Direction = Vector3.zero;
     public float Force = 0.5f;
@@ -67,6 +68,7 @@ public class Swarm : MonoBehaviour, ISwarmControl
         var obj = Instantiate(BoidPrefab, transform.position, transform.rotation, Dynamic.transform);
         var boid = obj.GetComponent<Boid>();
         boid.Swarm = this;
+        obj.layer = LayerMask.NameToLayer(Player.gameObject.name);
         
         var rand = boid.DestinationRadius;
         obj.transform.position = new Vector3(Random.Range(-rand, rand), 0, Random.Range(-rand, rand));
