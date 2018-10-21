@@ -74,7 +74,17 @@ public class Player : MonoBehaviour {
         }
     }
 
-    private Swarm currentSwarm() {
-        return _swarms.Count > 0 ? _swarms[_swarmIndex] : null;
+    private Swarm currentSwarm()
+    {
+        if (_swarms.Count > 0)
+        {
+            _swarmIndex = _swarmIndex % _swarms.Count;
+            return _swarms[_swarmIndex];
+        }
+        else
+        {
+            _swarmIndex = 0;
+            return null;
+        }
     }
 }
