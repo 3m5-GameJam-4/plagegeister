@@ -26,7 +26,6 @@ public class CollectableController : MonoBehaviour {
     }
 
     private void OnTriggerStay(Collider other) {
-        Debug.Log(other.gameObject.layer);
         if (
             other.gameObject.layer == LayerMask.NameToLayer("Player1")
             || other.gameObject.layer == LayerMask.NameToLayer("Player2")
