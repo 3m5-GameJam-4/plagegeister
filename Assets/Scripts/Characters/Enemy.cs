@@ -43,7 +43,7 @@ public class Enemy : MonoBehaviour
 		var target = Target;
 
 		DecreaseCooldown(Time.deltaTime);
-		if (target == null || Cooldown > 0)
+		if (target == null /*|| Cooldown > 0*/)
 		{
 			CharacterAnimation?.Idle();
 			return;
