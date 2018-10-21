@@ -81,7 +81,7 @@ public class Enemy : MonoBehaviour
 
 	private void OnDestroy()
 	{
-		EnemyRegistry?.UnRegisterEnemy(this);
+		EnemyRegistry?.UnregisterEnemy(this);
 		CharacterAnimation?.Die();
 	}
 

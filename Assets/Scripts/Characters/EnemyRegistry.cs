@@ -7,7 +7,7 @@ public class EnemyRegistry : MonoBehaviour
 	[SerializeField] private Transform _target;
 	[SerializeField] private float _reactionTime = 1.0f;
 	private List<Enemy> _enemies = new List<Enemy>();
-	[SerializeField] private List<Player> _players = new List<Player>();
+	[SerializeField] private List<Swarm> _players = new List<Swarm>();
 	private Random _random;
 
 	private void Start()
@@ -34,16 +34,16 @@ public class EnemyRegistry : MonoBehaviour
 		}
 	}
 
-	private Player FindNearestPlayer(Enemy enemy)
-	{	
-		var player = _players.Select(element => new { element, Distance = Vector3.Distance(element.transform.position, enemy.transform.position) })
+	private Swarm FindNearestPlayer(Enemy enemy)
+	{
+		var player = _players?.Select(element => new { element, Distance = Vector3.Distance(element.transform.position, enemy.transform.position) })
 			.OrderBy(element => element.Distance)
 			.FirstOrDefault();
 
 		return player?.element;
 	}
 
-	private void TraceTargetOnSight(Enemy enemy, Player player)
+	private void TraceTargetOnSight(Enemy enemy, Swarm player)
 	{
 		var sightDistance = enemy.SightDistance;
 		var distanceToNearestTarget = Vector3.Distance(player.transform.position, enemy.transform.position);
@@ -51,7 +51,7 @@ public class EnemyRegistry : MonoBehaviour
 		enemy.Target = (distanceToNearestTarget < sightDistance)? player.transform : null;
 	}
 
-	private void TraceTargetOnAnger(Enemy enemy, Player player)
+	private void TraceTargetOnAnger(Enemy enemy, Swarm player)
 	{
 		var anger = enemy.Anger;
 		var value = Random.Range(0.0f, 1.0f);
@@ -69,12 +69,12 @@ public class EnemyRegistry : MonoBehaviour
 		_enemies.Add(enemy);
 	}
 
-	public void UnRegisterEnemy(Enemy enemy)
+	public void UnregisterEnemy(Enemy enemy)
 	{
 		_enemies.Remove(enemy);
 	}
 
-	public void RegisterPlayer(Player player)
+	public void RegisterPlayer(Swarm player)
 	{
 		if (_players.Contains(player))
 		{
@@ -84,7 +84,7 @@ public class EnemyRegistry : MonoBehaviour
 		_players.Add(player);
 	}
 	
-	public void UnRegisterPlayer(Player player)
+	public void UnregisterPlayer(Swarm player)
 	{
 		_players.Remove(player);
 	}

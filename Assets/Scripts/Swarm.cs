@@ -21,6 +21,7 @@ public class Swarm : MonoBehaviour, ISwarmControl
     public int InitialBoids = 10;
 
     public List<GameObject> Boids = new List<GameObject>();
+    private EnemyRegistry _enemyRegistry;
 
     public Color Color
     {
@@ -38,6 +39,9 @@ public class Swarm : MonoBehaviour, ISwarmControl
         {
             spawnSlime();
         }
+        
+        _enemyRegistry = GameObject.FindGameObjectWithTag("EnemyRegister")?.GetComponent<EnemyRegistry>();
+        _enemyRegistry?.RegisterPlayer(this);
     }
 
     private void FixedUpdate()
@@ -48,6 +52,8 @@ public class Swarm : MonoBehaviour, ISwarmControl
     public void killSlime()
     {
         Boids.RemoveAt(Mathf.FloorToInt(Random.Range(0, Boids.Count)));
+        
+        _enemyRegistry?.UnregisterPlayer(this);
     }
 
     public void spawnSlime()
