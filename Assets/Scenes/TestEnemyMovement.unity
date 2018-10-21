@@ -17739,6 +17739,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _target: {fileID: 1513440694}
   _reactionTime: 1
+  _players: []
 --- !u!1001 &1190126800
 Prefab:
   m_ObjectHideFlags: 0
@@ -20383,7 +20384,12 @@ Prefab:
         type: 2}
       propertyPath: _target
       value: 
-      objectReference: {fileID: 1513440694}
+      objectReference: {fileID: 0}
+    - target: {fileID: 114457788402616392, guid: 569d146a5465be04e879b6494c2e310a,
+        type: 2}
+      propertyPath: _sightDistance
+      value: 40
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 569d146a5465be04e879b6494c2e310a, type: 2}
   m_IsPrefabAsset: 0
@@ -21944,7 +21950,12 @@ Prefab:
         type: 2}
       propertyPath: _target
       value: 
-      objectReference: {fileID: 1513440694}
+      objectReference: {fileID: 0}
+    - target: {fileID: 114870929424014748, guid: 7ed3e345f07e89940ae0c1e00eeb7d1d,
+        type: 2}
+      propertyPath: _sightDistance
+      value: 60
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7ed3e345f07e89940ae0c1e00eeb7d1d, type: 2}
   m_IsPrefabAsset: 0
@@ -23471,7 +23482,12 @@ Prefab:
         type: 2}
       propertyPath: _target
       value: 
-      objectReference: {fileID: 1513440694}
+      objectReference: {fileID: 0}
+    - target: {fileID: 114415955301938330, guid: 272ec112bddec644a8af6599107e74f7,
+        type: 2}
+      propertyPath: _sightDistance
+      value: 30
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 272ec112bddec644a8af6599107e74f7, type: 2}
   m_IsPrefabAsset: 0
