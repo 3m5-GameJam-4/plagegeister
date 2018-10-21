@@ -1,0 +1,49 @@
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class CollectableController : MonoBehaviour {
+    
+    public GameController _gameController;
+    private GameObject _particleEffectPrefab;
+    private float _maxHealth = 4;
+    private float _health = 4;
+    private Transform _model;
+    
+    private Vector3 _initScale;
+    private IAudio _myAudioInterfacee;
+        
+    void Start() {
+//      _gameController = GetComponent<GameController>();
+        _particleEffectPrefab = _gameController.ParticleEffectPrefab;
+        _model = transform.GetChild(0);
+        _initScale = _model.localScale;
+        _myAudioInterfacee = GetComponent<IAudio>();
+        _maxHealth = _gameController.gatherableMaxHealth;
+        _health = _maxHealth;
+    }
+    
+    private void OnTriggerStay(Collider other) {
+        if (other.gameObject.layer == LayerMask.NameToLayer("Player")) {
+            if (_health > 0) {
+                _health -= Time.deltaTime;
+                _model.localScale = _initScale * (_health / _maxHealth);
+            }
+            else {
+                // award Res & ScorePoints
+                _gameController.Res++;
+                _gameController.Score++;
+                
+                // Instantiate particle effect gameObject
+                Instantiate(_particleEffectPrefab, this.transform.position, Quaternion.identity);
+
+                // play audio
+                _myAudioInterfacee?.PlayAudio("collected");
+            
+                // destroy object after particle effect ended
+                Destroy(this.gameObject);
+            }
+        }
+    }
+}

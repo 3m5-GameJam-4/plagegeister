@@ -9,4 +9,5 @@ interface IAudio {
     // attackSlime
     // dieSwarm
     // dieEnemy
+    // collected
 }

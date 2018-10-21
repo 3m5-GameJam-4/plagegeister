@@ -9,45 +9,75 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1046897554015174}
+  m_RootGameObject: {fileID: 1025893379964298}
   m_IsPrefabAsset: 1
---- !u!1 &1046897554015174
+--- !u!1 &1025893379964298
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4195084762430808}
-  - component: {fileID: 33978412831033886}
-  - component: {fileID: 23036690863083606}
-  - component: {fileID: 65360485485908902}
-  m_Layer: 0
+  - component: {fileID: 4176176136889058}
+  - component: {fileID: 65505231263139070}
+  - component: {fileID: 114881967545913052}
+  m_Layer: 9
   m_Name: Wheat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4195084762430808
+--- !u!1 &1763129963657928
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4511416278011058}
+  - component: {fileID: 33405117387900396}
+  - component: {fileID: 23130165510569926}
+  m_Layer: 9
+  m_Name: WheatMesh
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4176176136889058
 Transform:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1046897554015174}
-  m_LocalRotation: {x: 0.0000018099951, y: 0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.5, y: 2.3, z: 1.5}
-  m_Children: []
+  m_GameObject: {fileID: 1025893379964298}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -1.853}
+  m_LocalScale: {x: 1.5, y: 2.5, z: 1.5}
+  m_Children:
+  - {fileID: 4511416278011058}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &23036690863083606
+--- !u!4 &4511416278011058
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1763129963657928}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4176176136889058}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &23130165510569926
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1046897554015174}
+  m_GameObject: {fileID: 1763129963657928}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -77,22 +107,35 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!33 &33978412831033886
+--- !u!33 &33405117387900396
 MeshFilter:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1046897554015174}
+  m_GameObject: {fileID: 1763129963657928}
   m_Mesh: {fileID: 4300000, guid: 169b507305ea88a46892f3d3b80c004a, type: 3}
---- !u!65 &65360485485908902
+--- !u!65 &65505231263139070
 BoxCollider:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1046897554015174}
+  m_GameObject: {fileID: 1025893379964298}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.49278542, y: 0.92448896, z: 0.6628625}
-  m_Center: {x: 0.0305541, y: 0.46224222, z: -0.28751943}
+  m_Size: {x: 0.4927854, y: 0.924489, z: 0.6628625}
+  m_Center: {x: 0.0305541, y: 0.4622422, z: -0.2875194}
+--- !u!114 &114881967545913052
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1025893379964298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b734fdf739d93ca4c947d665b351ad4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _gameController: {fileID: 114755661579472974, guid: 8a4c28591784c3744acda77233317b86,
+    type: 2}
