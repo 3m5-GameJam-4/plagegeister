@@ -81,7 +81,7 @@ public class Swarm : MonoBehaviour, ISwarmControl
         obj.layer = LayerMask.NameToLayer(Player.gameObject.name);
         
         var rand = boid.DestinationRadius;
-        obj.transform.position = new Vector3(Random.Range(-rand, rand), 0, Random.Range(-rand, rand));
+        obj.transform.position += new Vector3(Random.Range(-rand, rand), 0, Random.Range(-rand, rand));
         
         Boids.Add(obj);
     }
