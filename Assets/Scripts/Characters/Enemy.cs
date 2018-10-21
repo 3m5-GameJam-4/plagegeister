@@ -10,6 +10,7 @@ public class Enemy : MonoBehaviour
 	[SerializeField] private float _speed = 5;
 	[SerializeField] private float _attackRange;
 	[SerializeField] private float _maxDegrees = 10;
+	[SerializeField] private float _anger = 0.5f;
 
 	public Transform Target
 	{
@@ -18,13 +19,17 @@ public class Enemy : MonoBehaviour
 	}
 
 	public float Speed => _speed;
+	public float Anger => _anger;
 
 	private ICharacterAnimation CharacterAnimation { get; set; }
 	private float AttackRange => _attackRange;
+	private EnemyRegistry EnemyRegistry { get; set; }
 
 	private void Start()
 	{
 		CharacterAnimation = GetComponent<ICharacterAnimation>();
+		EnemyRegistry = GameObject.FindGameObjectWithTag("EnemyRegister").GetComponent<EnemyRegistry>();
+		EnemyRegistry?.RegisterEnemy(this);
 	}
 	
 	// Update is called once per frame
@@ -73,6 +78,7 @@ public class Enemy : MonoBehaviour
 
 	private void OnDestroy()
 	{
+		EnemyRegistry?.UnRegisterEnemy(this);
 		CharacterAnimation?.Die();
 	}
 
