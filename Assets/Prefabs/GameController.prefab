@@ -54,7 +54,10 @@ MonoBehaviour:
   ParticleEffectPrefab: {fileID: 1513045700914042, guid: ee4ad520a611f084fb3def886bcff79c,
     type: 2}
   gatherableMaxHealth: 4
-  SwarmHealth1: 10
-  SwarmHealth2: 10
-  Res: 9
-  Score: 9
+  _swarmHealth1: 10
+  _swarmHealth2: 10
+  _score: 0
+  _res: 0
+  _swarm1Text: {fileID: 0}
+  _swarm2Text: {fileID: 0}
+  _scoreText: {fileID: 0}
