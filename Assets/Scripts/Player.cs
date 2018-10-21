@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class Player : MonoBehaviour
 {
@@ -53,9 +51,7 @@ public class Player : MonoBehaviour
         {
             var hori = Input.GetAxis(InputHorizontalAxis);
             var vert = Input.GetAxis(InputVerticalAxis);
-            var direction = new Vector3(hori, 0, vert);
-
-            currentSwarm().Direction = direction;
+            currentSwarm().Move(hori, vert);
         }
 
         if (Input.GetButtonDown(InputPrevSwarm))

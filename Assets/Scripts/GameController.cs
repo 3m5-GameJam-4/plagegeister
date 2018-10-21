@@ -22,19 +22,28 @@ public class GameController : MonoBehaviour {
 	public int SwarmHealth1
 	{
 		get { return _swarmHealth1; }
-		set { _swarmHealth1 = value; }
+		set {
+			_swarmHealth1 = value; 
+			OnSwarmHealth1Changed();
+		}
 	}
 	
 	public int SwarmHealth2
 	{
 		get { return _swarmHealth2; }
-		set { _swarmHealth2 = value; }
+		set {
+			_swarmHealth2 = value;
+			OnSwarmHealth2Changed();
+		}
 	}
 	
 	public int Score
 	{
 		get { return _score; }
-		set { _score = value; }
+		set {
+			_score = value;
+			OnScoreChanged();
+		}
 	}
 	
 	public int Res

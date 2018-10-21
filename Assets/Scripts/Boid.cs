@@ -59,10 +59,11 @@ public class Boid : MonoBehaviour
             var cohesion = Cohere(rbs) * CohesionFactor;
             var alignment = Align(rbs) * AlignmentFactor;
             var separation = Separate(rbs) * SeparationFactor;
-            var destination = ToDestination(Destination) * DestinationFactor;
+            var swarmDirection = ToDestination(Swarm.Direction) * DestinationFactor;
+            //var destination = ToDestination(Destination) * DestinationFactor;
             var random = new Vector3(Rand(), Rand(), Rand());
             var forward = (Rb.velocity == Vector3.zero ? Vector3.left : Rb.velocity.normalized) * Mathf.Max(0, MinSpeed - Rb.velocity.magnitude);
-            return cohesion + alignment + separation + destination + random + forward;
+            return cohesion + alignment + separation + random + forward + swarmDirection;
         }
         else
         {
@@ -70,9 +71,9 @@ public class Boid : MonoBehaviour
         }
     }
 
-    private Vector3 ToDestination(Transform dest)
+    private Vector3 ToDestination(Vector3 dest)
     {
-        return dest && (dest.position - Rb.position).magnitude > DestinationRadius ? SteerTo(dest.position) : Vector3.zero;
+        return (dest - Rb.position).magnitude > DestinationRadius ? SteerTo(dest) : Vector3.zero;
     }
 
     private Vector3 Separate(ICollection<Rigidbody> neighbors)
