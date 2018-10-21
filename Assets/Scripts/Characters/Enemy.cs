@@ -115,7 +115,7 @@ public class Enemy : MonoBehaviour
 		var step = Speed * Time.deltaTime;
 		var targetDir = Target.position - transform.position;
 		var newDir = Vector3.RotateTowards(transform.forward, targetDir, step, 0.0f);
-		Debug.DrawRay(transform.position + new Vector3(0,1,0), newDir * _attackRange, Color.red);
+//		Debug.DrawRay(transform.position + new Vector3(0,1,0), newDir * _attackRange, Color.red);
 	}
 	
 	[Conditional("UNITY_EDITOR")]
@@ -124,7 +124,7 @@ public class Enemy : MonoBehaviour
 		var step = Speed * Time.deltaTime;
 		var targetDir = Target.position - transform.position;
 		var newDir = Vector3.RotateTowards(transform.forward, targetDir, step, 0.0f);
-		Debug.DrawRay(transform.position + new Vector3(0,2,0), newDir * _sightDistance, Color.green);
+//		Debug.DrawRay(transform.position + new Vector3(0,2,0), newDir * _sightDistance, Color.green);
 	}
 	
 	private float time = 0.0f;
