@@ -56,5 +56,5 @@ MonoBehaviour:
   gatherableMaxHealth: 4
   SwarmHealth1: 10
   SwarmHealth2: 10
-  Res: 7
-  Score: 7
+  Res: 9
+  Score: 9

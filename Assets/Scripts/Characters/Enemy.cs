@@ -30,7 +30,7 @@ public class Enemy : MonoBehaviour
 	private void Start()
 	{
 		CharacterAnimation = GetComponent<ICharacterAnimation>();
-		EnemyRegistry = GameObject.FindGameObjectWithTag("EnemyRegister").GetComponent<EnemyRegistry>();
+		EnemyRegistry = GameObject.FindGameObjectWithTag("EnemyRegister")?.GetComponent<EnemyRegistry>();
 		EnemyRegistry?.RegisterEnemy(this);
 	}
 	
