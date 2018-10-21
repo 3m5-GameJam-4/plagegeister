@@ -51,9 +51,7 @@ public class Player : MonoBehaviour
         {
             var hori = Input.GetAxis(InputHorizontalAxis);
             var vert = Input.GetAxis(InputVerticalAxis);
-            var direction = new Vector3(hori, 0, vert);
-
-            currentSwarm().Direction = direction;
+            currentSwarm().Move(hori, vert);
         }
 
         if (Input.GetButtonDown(InputPrevSwarm))
