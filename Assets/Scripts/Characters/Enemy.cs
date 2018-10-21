@@ -12,6 +12,7 @@ public class Enemy : MonoBehaviour
 	[SerializeField] private float _maxDegrees = 10;
 	[SerializeField] private float _anger = 0.5f;
 	[SerializeField] private float _sightDistance = 10.0f;
+	[SerializeField] private float _attackCooldown = 5;
 
 	public Transform Target
 	{
@@ -22,6 +23,8 @@ public class Enemy : MonoBehaviour
 	public float Speed => _speed;
 	public float Anger => _anger;
 	public float SightDistance => _sightDistance;
+	public float AttackCooldown => _attackCooldown;
+	public float Cooldown { get; private set; }
 
 	private ICharacterAnimation CharacterAnimation { get; set; }
 	private float AttackRange => _attackRange;
@@ -38,7 +41,9 @@ public class Enemy : MonoBehaviour
 	private void Update ()
 	{
 		var target = Target;
-		if (target == null)
+
+		DecreaseCooldown(Time.deltaTime);
+		if (target == null || Cooldown > 0)
 		{
 			CharacterAnimation?.Idle();
 			return;
@@ -51,12 +56,26 @@ public class Enemy : MonoBehaviour
 		if (TargetInRange(distance))
 		{
 			CharacterAnimation?.Attack();
+			IncreaseCooldown(_attackCooldown);
 		}
 		else
 		{
 			RotateTowardsTarget();
 			MoveTowardsTarget(transform.position, target.position, Speed * Time.deltaTime);
 		}
+	}
+
+	private void DecreaseCooldown(float deltaTime)
+	{
+		if (Cooldown > 0)
+		{
+			Cooldown = Mathf.Clamp(Cooldown - deltaTime, 0, float.MaxValue);
+		}
+	}
+
+	private void IncreaseCooldown(float attackCooldown)
+	{
+		Cooldown += attackCooldown;
 	}
 
 	private void MoveTowardsTarget(Vector3 current, Vector3 target, float maxDistanceDelta)
