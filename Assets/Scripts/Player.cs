@@ -46,7 +46,7 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        _swarms.ForEach((swarm) => swarm.Direction = Vector3.zero);
+        _swarms.ForEach((swarm) => swarm.Move(0, 0));
         if (currentSwarm())
         {
             var hori = Input.GetAxis(InputHorizontalAxis);
