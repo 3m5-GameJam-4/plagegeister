@@ -20,8 +20,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4840988029844650}
   - component: {fileID: 212140845313767972}
-  - component: {fileID: 50323459322122554}
   - component: {fileID: 114324408943181572}
+  - component: {fileID: 54886739798748592}
   m_Layer: 0
   m_Name: Swarm
   m_TagString: Untagged
@@ -35,33 +35,28 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1360735635646742}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 3.06, y: -0.56, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!50 &50323459322122554
-Rigidbody2D:
-  serializedVersion: 4
+--- !u!54 &54886739798748592
+Rigidbody:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1360735635646742}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
+  serializedVersion: 2
   m_Mass: 1
-  m_LinearDrag: 1
+  m_Drag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
+  m_UseGravity: 0
+  m_IsKinematic: 0
   m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
   m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!114 &114324408943181572
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -74,10 +69,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Renderer: {fileID: 212140845313767972}
-  Rb: {fileID: 50323459322122554}
-  BoidPrefab: {fileID: 1842262463410192, guid: 39bdb12fcef19e648b910c1ab3098abb, type: 2}
+  Rb: {fileID: 54886739798748592}
+  BoidPrefab: {fileID: 1653325384812590, guid: 311e444aa93a68d4ea7da1436ff0d1e8, type: 2}
   Dynamic: {fileID: 0}
-  Direction: {x: 0, y: 0}
+  Direction: {x: 0, y: 0, z: 0}
   Force: 0.5
   ForceMode: 1
   Boids: 10

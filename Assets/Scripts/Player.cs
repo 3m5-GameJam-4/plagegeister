@@ -16,6 +16,7 @@ public class Player : MonoBehaviour
 
     public GameObject SwarmPrefab;
     public GameObject Dynamic;
+    public GameObject Camera;
 
     private int _swarmIndex = 0;
     private List<Swarm> _swarms = new List<Swarm>();
@@ -51,7 +52,7 @@ public class Player : MonoBehaviour
         {
             var hori = Input.GetAxis(InputHorizontalAxis);
             var vert = Input.GetAxis(InputVerticalAxis);
-            var direction = new Vector2(hori, vert);
+            var direction = new Vector3(hori, 0, vert);
 
             currentSwarm().Direction = direction;
         }
