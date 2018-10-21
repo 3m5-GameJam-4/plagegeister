@@ -43,7 +43,12 @@ public class Enemy : MonoBehaviour
 		var target = Target;
 
 		DecreaseCooldown(Time.deltaTime);
-		if (target == null /*|| Cooldown > 0*/)
+		if (Cooldown > 0)
+		{
+			return;
+		}
+		
+		if (target == null)
 		{
 			CharacterAnimation?.Idle();
 			return;
@@ -58,11 +63,9 @@ public class Enemy : MonoBehaviour
 			CharacterAnimation?.Attack();
 			IncreaseCooldown(_attackCooldown);
 		}
-		else
-		{
-			RotateTowardsTarget();
-			MoveTowardsTarget(transform.position, target.position, Speed * Time.deltaTime);
-		}
+
+		RotateTowardsTarget();
+		MoveTowardsTarget(transform.position, target.position, Speed * Time.deltaTime);
 	}
 
 	private void DecreaseCooldown(float deltaTime)
