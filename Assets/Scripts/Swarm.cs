@@ -59,7 +59,7 @@ public class Swarm : MonoBehaviour, ISwarmControl
     public void Move(float hori, float vert)
     {
         var dir = new Vector3(hori, 0, vert);
-        Direction = transform.position + dir * 10f;
+        Direction = transform.position + dir * 50f;
     }
 
     public void killSlime()

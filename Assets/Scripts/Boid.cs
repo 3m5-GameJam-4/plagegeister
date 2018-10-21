@@ -48,7 +48,10 @@ public class Boid : MonoBehaviour
         var neighbors = Swarm?.Boids;
         var force = Flock(neighbors);
         Rb.AddForce(force, ForceMode);
-        transform.rotation = Quaternion.LookRotation(Rb.velocity);
+        if (Rb.velocity.magnitude > 0f)
+        {
+            transform.rotation = Quaternion.LookRotation(Rb.velocity);
+        }
     }
 
     private Vector3 Flock(ICollection<GameObject> neighbors)

@@ -586,8 +586,8 @@ MonoBehaviour:
   Destination: {fileID: 0}
   Swarm: {fileID: 0}
   MinSpeed: 1
-  MaxSpeed: 6
-  MaxForce: 10
+  MaxSpeed: 15
+  MaxForce: 30
   ForceMode: 0
   CohesionRadius: 40
   CohesionFactor: 1
