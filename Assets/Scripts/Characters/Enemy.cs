@@ -1,12 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
+using Debug = UnityEngine.Debug;
 
 public class Enemy : MonoBehaviour
 {
 	[SerializeField] private Transform _target;
 	[SerializeField] private float _speed = 5;
 	[SerializeField] private float _attackRange;
+	[SerializeField] private float _maxDegrees = 10;
 
 	public Transform Target
 	{
@@ -34,6 +37,8 @@ public class Enemy : MonoBehaviour
 			return;
 		}
 
+		DrawDebugRay();
+		
 		var distance = Vector3.Distance(transform.position, target.position);
 		if (TargetInRange(distance))
 		{
@@ -41,6 +46,7 @@ public class Enemy : MonoBehaviour
 		}
 		else
 		{
+			RotateTowardsTarget();
 			MoveTowardsTarget(transform.position, target.position, Speed * Time.deltaTime);
 		}
 	}
@@ -49,6 +55,15 @@ public class Enemy : MonoBehaviour
 	{
 		transform.position = Vector3.MoveTowards(current, target, maxDistanceDelta);
 		CharacterAnimation?.Move();
+	}
+
+	private void RotateTowardsTarget()
+	{
+		var targetDir = Target.position - transform.position;
+		var step = Speed * Time.deltaTime;
+		var newDir = Vector3.RotateTowards(transform.forward, targetDir, step, 0.0f);
+		
+		transform.rotation = Quaternion.LookRotation(newDir);
 	}
 
 	private bool TargetInRange(float distance)
@@ -64,5 +79,14 @@ public class Enemy : MonoBehaviour
 	public void Die()
 	{
 		Destroy(this);
+	}
+
+	[Conditional("UNITY_EDITOR")]
+	private void DrawDebugRay()
+	{
+		var step = Speed * Time.deltaTime;
+		var targetDir = Target.position - transform.position;
+		var newDir = Vector3.RotateTowards(transform.forward, targetDir, step, 0.0f);
+		Debug.DrawRay(transform.position + new Vector3(0,1,0), newDir * _attackRange, Color.red);
 	}
 }
