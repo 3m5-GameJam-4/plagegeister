@@ -16,11 +16,14 @@ public class Player : MonoBehaviour {
     public GameObject Dynamic;
     public GameObject Camera;
 
+    public GameController GameController;
+
     private int _swarmIndex = 0;
     private List<Swarm> _swarms = new List<Swarm>();
 
     private void Start() {
         if (!Dynamic) Dynamic = GameObject.Find("_Dynamic");
+        if (!GameController) GameController = GameObject.Find("GameController")?.GetComponent<GameController>();
     }
 
     public void nextSwarm() {
@@ -34,6 +37,11 @@ public class Player : MonoBehaviour {
     }
 
     public void spawnSwarm() {
+        if (GameController?.Res >= 50)
+        {
+            GameController.Res -= 50;
+        }
+        
         var obj = Instantiate(SwarmPrefab, transform.position, transform.rotation, Dynamic.transform);
         var swarm = obj.GetComponent<Swarm>();
         swarm.Player = this;
