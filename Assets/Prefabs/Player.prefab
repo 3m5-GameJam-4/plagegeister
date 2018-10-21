@@ -57,5 +57,7 @@ MonoBehaviour:
   InputPrevSwarm: PrevSwarm1
   InputNextSwarm: NextSwarm1
   InputSpawnSwarm: SpawnSwarm1
-  SwarmPrefab: {fileID: 0}
+  SwarmPrefab: {fileID: 1360735635646742, guid: 20fc757833acdbf4f9a96a52de551738,
+    type: 2}
   Dynamic: {fileID: 0}
+  Camera: {fileID: 0}
