@@ -45,6 +45,12 @@ public class Player : MonoBehaviour
         _swarms.Add(swarm);
     }
 
+    public void killSwarm(GameObject swarm)
+    {
+        _swarms.Remove(swarm.GetComponent<Swarm>());
+        Destroy(swarm);
+    }
+
     private void Update()
     {
         _swarms.ForEach((swarm) => swarm.Move(0, 0));

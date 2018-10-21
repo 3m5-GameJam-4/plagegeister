@@ -59,8 +59,12 @@ public class Swarm : MonoBehaviour, ISwarmControl
     public void killSlime()
     {
         Boids.RemoveAt(Mathf.FloorToInt(Random.Range(0, Boids.Count)));
-        
-        _enemyRegistry?.UnregisterPlayer(this);
+
+        if (Boids.Count == 0)
+        {
+            _enemyRegistry?.UnregisterPlayer(this);
+            Player.killSwarm(gameObject);
+        }
     }
 
     public void spawnSlime()
