@@ -19,6 +19,7 @@ public class Swarm : MonoBehaviour, ISwarmControl
 
     public List<GameObject> Boids = new List<GameObject>();
     private EnemyRegistry _enemyRegistry;
+    private GameController _gameController;
 
     public Color Color
     {
@@ -39,6 +40,10 @@ public class Swarm : MonoBehaviour, ISwarmControl
         
         _enemyRegistry = GameObject.FindGameObjectWithTag("EnemyRegister")?.GetComponent<EnemyRegistry>();
         _enemyRegistry?.RegisterPlayer(this);
+        
+        _gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
+
+        IncreaseSwarmHealth(10);
     }
 
     private void FixedUpdate()
@@ -60,6 +65,7 @@ public class Swarm : MonoBehaviour, ISwarmControl
     public void killSlime()
     {
         if (Boids.Count > 0) {
+            ReduceSwarmHealth();
             var boid = Boids[0];
             Boids.Remove(boid);
             Destroy(boid.gameObject);
@@ -84,5 +90,31 @@ public class Swarm : MonoBehaviour, ISwarmControl
         obj.transform.position = new Vector3(Random.Range(-rand, rand), 0, Random.Range(-rand, rand));
         
         Boids.Add(obj);
+    }
+
+    private void IncreaseSwarmHealth(int health)
+    {
+        switch (Player.name)
+        {
+            case "Player1":
+                _gameController.SwarmHealth1 += health;
+                break;
+            case "Player2":
+                _gameController.SwarmHealth2 += health;
+                break;
+        }
+    }
+
+    private void ReduceSwarmHealth()
+    {
+        switch (Player.name)
+        {
+            case "Player1":
+                _gameController.SwarmHealth1--;
+                break;
+            case "Player2":
+                _gameController.SwarmHealth2--;
+                break;
+        }
     }
 }
