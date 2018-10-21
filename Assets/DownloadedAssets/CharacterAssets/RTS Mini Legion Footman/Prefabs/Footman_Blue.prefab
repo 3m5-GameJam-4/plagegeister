@@ -739,9 +739,9 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100048}
-  m_LocalRotation: {x: -0, y: -0.9070204, z: -0, w: -0.4210867}
-  m_LocalPosition: {x: 33.2, y: -0.0040285587, z: 19.6}
-  m_LocalScale: {x: 1.0000002, y: 1, z: 1.0000002}
+  m_LocalRotation: {x: -0, y: -0.9476109, z: -0, w: 0.3194271}
+  m_LocalPosition: {x: -11.028076, y: 0, z: 6.6499634}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400046}
   - {fileID: 400044}
@@ -926,7 +926,7 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
-  m_UseGravity: 0
+  m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 80
@@ -948,6 +948,7 @@ MonoBehaviour:
   _maxDegrees: 10
   _anger: 0.5
   _sightDistance: 10
+  _attackCooldown: 5
   interpolationPeriod: 0.5
 --- !u!114 &114901282677978998
 MonoBehaviour:
@@ -970,7 +971,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 1.15
-  m_Height: 3.7
+  m_Radius: 1
+  m_Height: 1
   m_Direction: 1
-  m_Center: {x: 0, y: 0.99, z: 0}
+  m_Center: {x: 0, y: 1, z: 0}
