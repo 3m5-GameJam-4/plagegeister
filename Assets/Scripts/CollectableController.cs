@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CollectableController : MonoBehaviour {
-    public GameController _gameController;
+    private GameController _gameController;
     private GameObject _particleEffectPrefab;
     private float _maxHealth = 4;
     private float _health = 4;
