@@ -17738,6 +17738,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _target: {fileID: 1513440694}
+  _reactionTime: 1
 --- !u!1001 &1190126800
 Prefab:
   m_ObjectHideFlags: 0

@@ -11,6 +11,7 @@ public class Enemy : MonoBehaviour
 	[SerializeField] private float _attackRange;
 	[SerializeField] private float _maxDegrees = 10;
 	[SerializeField] private float _anger = 0.5f;
+	[SerializeField] private float _sightDistance = 10.0f;
 
 	public Transform Target
 	{
@@ -20,6 +21,7 @@ public class Enemy : MonoBehaviour
 
 	public float Speed => _speed;
 	public float Anger => _anger;
+	public float SightDistance => _sightDistance;
 
 	private ICharacterAnimation CharacterAnimation { get; set; }
 	private float AttackRange => _attackRange;
@@ -42,7 +44,8 @@ public class Enemy : MonoBehaviour
 			return;
 		}
 
-		DrawDebugRay();
+		DrawAttackRange();
+		DrawSightRange();
 		
 		var distance = Vector3.Distance(transform.position, target.position);
 		if (TargetInRange(distance))
@@ -88,11 +91,20 @@ public class Enemy : MonoBehaviour
 	}
 
 	[Conditional("UNITY_EDITOR")]
-	private void DrawDebugRay()
+	private void DrawAttackRange()
 	{
 		var step = Speed * Time.deltaTime;
 		var targetDir = Target.position - transform.position;
 		var newDir = Vector3.RotateTowards(transform.forward, targetDir, step, 0.0f);
 		Debug.DrawRay(transform.position + new Vector3(0,1,0), newDir * _attackRange, Color.red);
+	}
+	
+	[Conditional("UNITY_EDITOR")]
+	private void DrawSightRange()
+	{
+		var step = Speed * Time.deltaTime;
+		var targetDir = Target.position - transform.position;
+		var newDir = Vector3.RotateTowards(transform.forward, targetDir, step, 0.0f);
+		Debug.DrawRay(transform.position + new Vector3(0,2,0), newDir * _sightDistance, Color.green);
 	}
 }
