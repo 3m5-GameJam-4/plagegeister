@@ -26,7 +26,10 @@ public class CollectableController : MonoBehaviour {
     }
 
     private void OnTriggerStay(Collider other) {
-        if (other.gameObject.layer == LayerMask.NameToLayer("Player")) {
+        if (
+            other.gameObject.layer == LayerMask.NameToLayer("Player1")
+            || other.gameObject.layer == LayerMask.NameToLayer("Player2")
+        ) {
             if (_health > 0) {
                 _health -= Time.deltaTime;
                 _model.localScale = _initScale * (_health / _maxHealth);

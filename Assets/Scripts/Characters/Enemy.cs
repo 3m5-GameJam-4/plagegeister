@@ -116,7 +116,8 @@ public class Enemy : MonoBehaviour
 		time += Time.deltaTime;
 		if (
 			other.gameObject.layer == LayerMask.NameToLayer("Player1")
-			|| other.gameObject.layer == LayerMask.NameToLayer("Player2")) {
+			|| other.gameObject.layer == LayerMask.NameToLayer("Player2")
+			) {
 
 			Debug.Log("hit");
 			
