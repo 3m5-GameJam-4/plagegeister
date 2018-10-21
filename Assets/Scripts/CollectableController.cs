@@ -4,16 +4,17 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CollectableController : MonoBehaviour {
-    
     public GameController _gameController;
     private GameObject _particleEffectPrefab;
     private float _maxHealth = 4;
     private float _health = 4;
     private Transform _model;
-    
+
     private Vector3 _initScale;
     private IAudio _myAudioInterfacee;
-        
+
+    private bool isDead = false;
+
     void Start() {
 //      _gameController = GetComponent<GameController>();
         _particleEffectPrefab = _gameController.ParticleEffectPrefab;
@@ -23,7 +24,7 @@ public class CollectableController : MonoBehaviour {
         _maxHealth = _gameController.gatherableMaxHealth;
         _health = _maxHealth;
     }
-    
+
     private void OnTriggerStay(Collider other) {
         if (other.gameObject.layer == LayerMask.NameToLayer("Player")) {
             if (_health > 0) {
@@ -31,18 +32,21 @@ public class CollectableController : MonoBehaviour {
                 _model.localScale = _initScale * (_health / _maxHealth);
             }
             else {
-                // award Res & ScorePoints
-                _gameController.Res++;
-                _gameController.Score++;
-                
-                // Instantiate particle effect gameObject
-                Instantiate(_particleEffectPrefab, this.transform.position, Quaternion.identity);
+                if (isDead == false) {
+                    isDead = true;
+                    // award Res & ScorePoints
+                    _gameController.Res++;
+                    _gameController.Score++;
 
-                // play audio
-                _myAudioInterfacee?.PlayAudio("collected");
-            
-                // destroy object after particle effect ended
-                Destroy(this.gameObject);
+                    // Instantiate particle effect gameObject
+                    Instantiate(_particleEffectPrefab, this.transform.position, Quaternion.identity);
+
+                    // play audio
+                    _myAudioInterfacee?.PlayAudio("collected");
+
+                    // destroy object after particle effect ended
+                    Destroy(this.gameObject);
+                }
             }
         }
     }
