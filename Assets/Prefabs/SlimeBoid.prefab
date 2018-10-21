@@ -203,6 +203,7 @@ GameObject:
   - component: {fileID: 136722025886209416}
   - component: {fileID: 54569165648382268}
   - component: {fileID: 114000370144772608}
+  - component: {fileID: 136604725596052066}
   m_Layer: 11
   m_Name: SlimeBoid
   m_TagString: Boid
@@ -583,6 +584,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Rb: {fileID: 54569165648382268}
   Destination: {fileID: 0}
+  Swarm: {fileID: 0}
   MinSpeed: 1
   MaxSpeed: 6
   MaxForce: 10
@@ -597,6 +599,19 @@ MonoBehaviour:
   DestinationFactor: 1.5
   DestinationRadius: 3
   RandomRange: 0.1
+--- !u!136 &136604725596052066
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1653325384812590}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 1
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!136 &136722025886209416
 CapsuleCollider:
   m_ObjectHideFlags: 1

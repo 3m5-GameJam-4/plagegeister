@@ -107,4 +107,28 @@ public class Enemy : MonoBehaviour
 		var newDir = Vector3.RotateTowards(transform.forward, targetDir, step, 0.0f);
 		Debug.DrawRay(transform.position + new Vector3(0,2,0), newDir * _sightDistance, Color.green);
 	}
+	
+	private float time = 0.0f;
+	public float interpolationPeriod = 1.0f;
+	private Swarm swarm;
+	
+	private void OnTriggerStay(Collider other) {
+		time += Time.deltaTime;
+		if (
+			other.gameObject.layer == LayerMask.NameToLayer("Player1")
+			|| other.gameObject.layer == LayerMask.NameToLayer("Player2")) {
+
+			Debug.Log("hit");
+			
+			// every second
+			if (time >= interpolationPeriod) {
+				time = 0.0f;
+				Debug.Log("Kill");
+
+				// kill a slime from swarm
+				Debug.Log(other.gameObject);
+				other.gameObject.GetComponent<Boid>().Swarm.killSlime();
+			}
+		}
+	}
 }

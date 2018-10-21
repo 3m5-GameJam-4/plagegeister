@@ -346,6 +346,7 @@ GameObject:
   - component: {fileID: 114049721488852088}
   - component: {fileID: 114457788402616392}
   - component: {fileID: 136178607590743586}
+  - component: {fileID: 54633713256836834}
   m_Layer: 10
   m_Name: FreeGolem
   m_TagString: Untagged
@@ -724,7 +725,7 @@ MeshCollider:
   m_GameObject: {fileID: 100000}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Convex: 0
   m_CookingOptions: 14
@@ -826,6 +827,21 @@ Prefab:
   m_SourcePrefab: {fileID: 0}
   m_RootGameObject: {fileID: 100044}
   m_IsPrefabAsset: 1
+--- !u!54 &54633713256836834
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100044}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 80
+  m_CollisionDetection: 0
 --- !u!114 &114049721488852088
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -855,6 +871,7 @@ MonoBehaviour:
   _maxDegrees: 10
   _anger: 0.5
   _sightDistance: 10
+  interpolationPeriod: 0.1
 --- !u!136 &136178607590743586
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -862,7 +879,7 @@ CapsuleCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100044}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 3.07
   m_Height: 12.71

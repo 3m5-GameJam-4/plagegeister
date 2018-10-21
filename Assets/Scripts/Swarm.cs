@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using DefaultNamespace;
 using UnityEngine;
+using UnityEngine.AI;
 using Random = UnityEngine.Random;
 
 public class Swarm : MonoBehaviour, ISwarmControl
@@ -58,13 +59,18 @@ public class Swarm : MonoBehaviour, ISwarmControl
 
     public void killSlime()
     {
-        Boids.RemoveAt(Mathf.FloorToInt(Random.Range(0, Boids.Count)));
-
+        if (Boids.Count > 0) {
+            var boid = Boids[0];
+            Boids.Remove(boid);
+            Destroy(boid.gameObject);
+        }
+        
         if (Boids.Count == 0)
         {
             _enemyRegistry?.UnregisterPlayer(this);
             Player.killSwarm(gameObject);
         }
+        
     }
 
     public void spawnSlime()
