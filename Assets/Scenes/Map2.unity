@@ -3008,6 +3008,16 @@ Prefab:
       propertyPath: m_TagString
       value: GameController
       objectReference: {fileID: 0}
+    - target: {fileID: 114755661579472974, guid: 8a4c28591784c3744acda77233317b86,
+        type: 2}
+      propertyPath: _swarmHealth1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114755661579472974, guid: 8a4c28591784c3744acda77233317b86,
+        type: 2}
+      propertyPath: _swarmHealth2
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8a4c28591784c3744acda77233317b86, type: 2}
   m_IsPrefabAsset: 0
