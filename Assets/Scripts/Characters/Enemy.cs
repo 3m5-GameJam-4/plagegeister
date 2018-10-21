@@ -60,4 +60,9 @@ public class Enemy : MonoBehaviour
 	{
 		CharacterAnimation?.Die();
 	}
+
+	public void Die()
+	{
+		Destroy(this);
+	}
 }
