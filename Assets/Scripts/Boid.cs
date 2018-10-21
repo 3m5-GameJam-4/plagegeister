@@ -10,6 +10,7 @@ public class Boid : MonoBehaviour
 {
     public Rigidbody Rb;
     public Transform Destination;
+    public Swarm Swarm;
 
     public float MinSpeed = 1f;
     public float MaxSpeed = 2f;
@@ -44,7 +45,7 @@ public class Boid : MonoBehaviour
 
     private void FixedUpdate()
     {
-        var neighbors = GameObject.FindGameObjectsWithTag("Boid");
+        var neighbors = Swarm?.Boids;
         var force = Flock(neighbors);
         Rb.AddForce(force, ForceMode);
         transform.rotation = Quaternion.LookRotation(Rb.velocity);
