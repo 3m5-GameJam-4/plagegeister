@@ -37,7 +37,18 @@ public class Swarm : MonoBehaviour, ISwarmControl
 
     private void FixedUpdate()
     {
-        Rb.AddForce(Direction * Force, ForceMode.Impulse);
+        if (firstBoid()) transform.position = firstBoid().transform.position;
+    }
+
+    private GameObject firstBoid()
+    {
+        return Boids.Count > 0 ? Boids[0] : null;
+    }
+
+    public void Move(float hori, float vert)
+    {
+        var dir = new Vector3(hori, 0, vert);
+        Direction = transform.position + dir * 10f;
     }
 
     public void killSlime()
@@ -50,9 +61,10 @@ public class Swarm : MonoBehaviour, ISwarmControl
         var obj = Instantiate(BoidPrefab, transform.position, transform.rotation, Dynamic.transform);
         var boid = obj.GetComponent<Boid>();
         boid.Swarm = this;
-        boid.Destination = transform;
+        
         var rand = boid.DestinationRadius;
         obj.transform.position = new Vector3(Random.Range(-rand, rand), 0, Random.Range(-rand, rand));
+        
         Boids.Add(obj);
     }
 }
