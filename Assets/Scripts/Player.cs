@@ -41,6 +41,10 @@ public class Player : MonoBehaviour {
         {
             GameController.Res -= 50;
         }
+        else
+        {
+            return;
+        }
         
         var obj = Instantiate(SwarmPrefab, transform.position, transform.rotation, Dynamic.transform);
         var swarm = obj.GetComponent<Swarm>();
