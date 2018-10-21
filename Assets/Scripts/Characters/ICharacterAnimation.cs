@@ -1,8 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public interface ICharacterAnimation
+﻿public interface ICharacterAnimation
 {
     void Idle();
+    void Attack();
+    void Die();
+    void Move();
 }
