@@ -16,7 +16,7 @@ public class CollectableController : MonoBehaviour {
     private bool isDead = false;
 
     void Start() {
-//      _gameController = GetComponent<GameController>();
+        _gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
         _particleEffectPrefab = _gameController.ParticleEffectPrefab;
         _model = transform.GetChild(0);
         _initScale = _model.localScale;
@@ -26,6 +26,7 @@ public class CollectableController : MonoBehaviour {
     }
 
     private void OnTriggerStay(Collider other) {
+        Debug.Log(other.gameObject.layer);
         if (
             other.gameObject.layer == LayerMask.NameToLayer("Player1")
             || other.gameObject.layer == LayerMask.NameToLayer("Player2")
