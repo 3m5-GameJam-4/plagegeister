@@ -13,10 +13,10 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
-  - 
+  - Map
+  - Collectable
+  - Enemy
+  - Player
   - 
   - 
   - 
