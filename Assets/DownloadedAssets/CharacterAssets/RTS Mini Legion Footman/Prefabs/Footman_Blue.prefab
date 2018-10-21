@@ -948,7 +948,7 @@ MonoBehaviour:
   _maxDegrees: 10
   _anger: 0.5
   _sightDistance: 10
-  interpolationPeriod: 0.1
+  interpolationPeriod: 0.5
 --- !u!114 &114901282677978998
 MonoBehaviour:
   m_ObjectHideFlags: 1

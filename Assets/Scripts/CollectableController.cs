@@ -33,7 +33,7 @@ public class CollectableController : MonoBehaviour {
         ) {
             if (_health > 0) {
                 _health -= Time.deltaTime;
-                _model.localScale = _initScale * (_health / _maxHealth);
+//                _model.localScale = _initScale * (_health / _maxHealth);
             }
             else {
                 if (isDead == false) {
